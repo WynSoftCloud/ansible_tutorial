@@ -4,12 +4,10 @@
   become: true
   tasks:
 
-  - name: remove apache2 package
-    apt:
-      name: apache2
+  - name: remove apache and php packages
+    package:
+      name: 
+        - "{{ apache_package }}"
+        - "{{ php_package }}"
       state: absent
 
-  - name: remove php support for apache
-    apt:
-      name: libapache2-mod-php
-      state: absent
