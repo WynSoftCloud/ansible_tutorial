@@ -63,7 +63,24 @@
     service:
       name: httpd
       state: started
+      enabled: yes
     when: ansible_distribution in ["CentOS", "Rocky"]
+
+  - name: change email address for admin
+    tags: apache,centos,rocky,httpd
+    lineinfile:
+      path: /etc/httpd/conf/httpd.conf
+      regexp: '^ServerAdmin'
+      line: ServerAdmin admin@wynsoft.cloud
+    when: ansible_distribution in ["CentOS", "Rocky"]
+    register: httpd
+
+  - name: restart httpd (CentOS or Rocky Linux)
+    tags: apache,apache2,httpd
+    service:
+      name: httpd
+      state: restarted
+    when: httpd.changed
 
   - name: copy default html file for site
     tags: apache,apache2,httpd
