@@ -7,3 +7,6 @@ ubuntu-test2.lab19.wynsoft.cloud
 
 [file_servers]
 ubuntu-test3.lab19.wynsoft.cloud 
+
+[workstations]
+ubuntu-ws-test.lab19.wynsoft.cloud
