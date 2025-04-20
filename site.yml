@@ -4,20 +4,30 @@
   become: true
   pre_tasks:
 
-  - name: install updates (CentOS or Rocky Linux)
+  - name: update cache (CentOS or Rocky Linux)
     tags: always
     dnf:
-      update_only: yes
       update_cache: yes
+    changed_when: false
     when: ansible_distribution in ["CentOS", "Rocky"]
 
-  - name: install updates (Ubuntu or Debian)
+  - name: update cache (Ubuntu or Debian)
     tags: always
     apt:
-      upgrade: dist
       update_cache: yes
+    changed_when: false
     when: ansible_distribution in ["Ubuntu", "Debian"]
 
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: add ssh key for simone
+    tags: always
+    authorized_key:
+      user: simone
+      key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIErzVmoRZCpIl3BXNh1GrAjKQeYpiqFqnIp0o+W2kK+R Ansible Tutorial"
 
 - hosts: workstations
   become: true
