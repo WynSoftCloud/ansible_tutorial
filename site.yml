@@ -58,6 +58,13 @@
       state: latest
     when: ansible_distribution in ["CentOS", "Rocky"]
 
+  - name: start httpd (CentOS or Rocky Linux)
+    tags: apache.centos,rocky,httpd
+    service:
+      name: httpd
+      state: started
+    when: ansible_distribution in ["CentOS", "Rocky"]
+
   - name: copy default html file for site
     tags: apache,apache2,httpd
     copy:
