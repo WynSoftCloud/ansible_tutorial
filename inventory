@@ -1,4 +1,9 @@
-ubuntu-test1.lab19.wynsoft.cloud apache_package=apache2 php_package=libapache2-mod-php
-ubuntu-test2.lab19.wynsoft.cloud apache_package=apache2 php_package=libapache2-mod-php
-ubuntu-test3.lab19.wynsoft.cloud apache_package=apache2 php_package=libapache2-mod-php
-rocky9-test1.lab19.wynsoft.cloud apache_package=httpd php_package=php
+[web_servers]
+ubuntu-test1.lab19.wynsoft.cloud
+rocky9-test1.lab19.wynsoft.cloud
+
+[db_servers]
+ubuntu-test2.lab19.wynsoft.cloud
+
+[file_servers]
+ubuntu-test3.lab19.wynsoft.cloud 
